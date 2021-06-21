@@ -22,4 +22,4 @@ $oldmbxguid
 $newmbxguid = (Get-Mailbox -identity Jordan.Kay@gianteagle.com).exchangeguid
 $newmbxguid
 
-#New-MailboxRestoreRequest -SourceMailbox $oldmbxguid -TargetMailbox $newmbxguid -AllowLegacyDNMismatch
+New-MailboxRestoreRequest -SourceMailbox $oldmbxguid -TargetMailbox $newmbxguid -AllowLegacyDNMismatch
