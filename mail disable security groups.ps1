@@ -7,7 +7,10 @@ Connect-MsolService
 
 # Get all mail-enabled security and distribution groups with over 50 members
 # $groups = Get-DistributionGroup -ResultSize Unlimited | Where-Object { $_.RecipientTypeDetails -eq 'MailUniversalSecurityGroup' -or $_.RecipientTypeDetails -eq 'MailUniversalDistributionGroup' -and $_.MemberCount -gt 50 }
-$groups = 'MIM_App_GEAC_CMA_User','MIM_APP_MWG_CorpOfficer','MIM_APP_MWG_Managers','MIM_App_SOP_Adjustments'
+$csvFilePath = "C:\Temp\"
+$groups = Import-Csv -Path $csvFilePath -ErrorAction Stop
+$groups = $groups.DisplayName
+#$groups = 'MIM_App_GEAC_CMA_User','MIM_APP_MWG_CorpOfficer','MIM_APP_MWG_Managers','MIM_App_SOP_Adjustments'
 $groups = $groups | ForEach-Object {Get-DistributionGroup -Identity $_ | Select-Object DisplayName, ExternalDirectoryObjectId, DistinguishedName}
 
 foreach ($group in $groups) {
