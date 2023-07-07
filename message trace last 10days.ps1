@@ -1,0 +1,5 @@
+$groups = "App_Biceps/PromptUsers@gianteagle.com","PDL_Retail_Pricing@gianteagle.com","PDL_RiserFoods@gianteagle.com","SG_All_Contractors@gianteagle.onmicrosoft.com","SG_BVM_SupplyChain_OM_Merch@gianteagle.onmicrosoft.com","SG_CitrixApps_Access@gianteagle.com","SG_IS_InformationServices@gianteagle.onmicrosoft.com","PDL_DCOPS@gianteagle.com","Str_Corp_SelfCheckout@gianteagle.com","GRP_Live_Well_Advocates_All@gianteagle.com","GRP_Sensory_Invite_List@gianteagle.com","Str_Corp_BWL@gianteagle.com","GRP_Reset_Schedule@gianteagle.com","GRP_SmartTrack_PayrollAdmins@gianteagle.com","GRP_Peoplesoft_FS_Users@gianteagle.com","GRP_SmartTrack_COL@gianteagle.com","GRP_PerformanceMgmt@gianteagle.com","GRP_Produce_Zone_001@gianteagle.com"
+$groups | ForEach-Object {
+    Write-Host "Checking for mail sent to $_ over the last 10 days"
+    Get-MessageTrace -StartDate (Get-Date).AddDays(-10) -EndDate (Get-Date) -RecipientAddress "$_"
+}

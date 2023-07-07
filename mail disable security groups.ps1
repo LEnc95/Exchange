@@ -1,4 +1,5 @@
 # Activate Echange Admin to remove MSOL group. 
+Install-Module -Name DCToolbox -Scope CurrentUser -Force
 Enable-DCAzureADPIMRole -RolesToActivate "Global Administrator" -Reason "Script removal of mail enabled objects with 50+ members" -UseMaximumTimeAllowed
 
 # Connect to Exchange Online (Exchange Online PowerShell module required)
